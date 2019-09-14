@@ -4,43 +4,43 @@ from pathlib import Path
 
 budget_data = os.path.join("Resources", "budget_data.csv")
 
-#The net total amount of "Profit/Losses" over the entire period
-with open(budget_data, 'r') as f:
-  next(f) #skips the first row
-  total = 0
-  for row in csv.reader(f):
-    total += float(row[1])
   
 
-#Import data as a list - The total number of months included in the dataset
-results = [0]
+# #Import data as a list - The total number of months included in the dataset
+date_results = []
+profit_results = []
+avg_results = []
+
 with open(budget_data, newline='') as inputfile:
     next(inputfile)
+
     for row in csv.reader(inputfile):
-        results.append(row[0])
+        date_results.append(row[0])
+        profit_results.append(float(row[1]))
 
+#print(len(date_results))
 
- #The average of the changes in "Profit/Losses" over the entire period
-# with open(budget_data, 'a') as mn:
-#     reader = csv.reader(mn)
-#     next(reader) #skip the header
-#     total = 0
-#     the_numbers = [float(row[1]) for row in reader]
-#     average = sum(the_numbers) / len(the_numbers)
-    
-#     print(average)
+#print(sum(profit_results))
 
-# Print the Results
+#The average of the changes in "Profit/Losses" over the entire period
+    for x in range(len(profit_results)):
+      avg_results.append((profit_results[x+1])-profit_results[x]))
+
+print(sum(avg_results)/len(avg_results))
+#The greatest increase in profits (date and amount) over the entire period
+#The greatest decrease in losses (date and amount) over the entire period
+
+#Print the Results
 
 print("Financial Analyses")
 print("----------------------------")
-print(f"Total Months: {len(results)} ")
-print(f"Total: ${(total)}")
+print(f"Total Months: {len(date_results)} ")
+print(f"Total: ${(sum(profit_results))}")
 print(f"Average Change: ")
 print(f"Greatest Increase in Profits: ")
 print(f"Greatest Decrease in Profits: ")
 
-# export a text file with the result
+# # export a text file with the result
 output_file = Path("Output_Summary.txt")
 
 with open(output_file,"w") as file:
