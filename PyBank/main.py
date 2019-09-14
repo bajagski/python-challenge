@@ -23,10 +23,10 @@ with open(budget_data, newline='') as inputfile:
 #print(sum(profit_results))
 
 #The average of the changes in "Profit/Losses" over the entire period
-    for x in range(len(profit_results)):
-      avg_results.append((profit_results[x+1])-profit_results[x]))
+#     for x in range(len(profit_results)):
+#       avg_results.append((profit_results[x+1])-profit_results[x]))
 
-print(sum(avg_results)/len(avg_results))
+# print(sum(avg_results)/len(avg_results))
 #The greatest increase in profits (date and amount) over the entire period
 #The greatest decrease in losses (date and amount) over the entire period
 
@@ -50,9 +50,9 @@ with open(output_file,"w") as file:
     file.write("\n")
     file.write("----------------------------")
     file.write("\n")
-    file.write(f"Total Months: {len(results)}")
+    file.write(f"Total Months: {len(date_results)}")
     file.write("\n")
-    file.write(f"Total: ${(total)}")
+    file.write(f"Total: ${(sum(profit_results))}")
     file.write("\n")
     file.write(f"Average Change:")
     file.write("\n")
